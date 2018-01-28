@@ -2,14 +2,16 @@
 
 import React from "react";
 import Board from "./Board";
+import _ from "lodash";
 
-const labels = ["Group A", "Group B", "Group C"];
+const labels = "ABCDEFG".split("");
 type State = {
-  data: Array<any>
+  labels: Array<any>,
+  open: boolean
 };
 
-class Hoge extends React.Component<{}, State> {
-  state = { labels };
+class App extends React.Component<{}, State> {
+  state = { labels, open: false };
   render() {
     const { state } = this;
     return (
@@ -21,7 +23,7 @@ class Hoge extends React.Component<{}, State> {
         <button
           onClick={() => {
             console.log(state.labels);
-            this.setState({ labels: [...state.labels, ...state.labels] });
+            this.setState({ labels: _.shuffle(state.labels) });
           }}
         >
           Change
@@ -30,4 +32,4 @@ class Hoge extends React.Component<{}, State> {
     );
   }
 }
-export default Hoge;
+export default App;
