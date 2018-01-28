@@ -6,22 +6,29 @@ import _ from "lodash";
 import Button from "material-ui/Button";
 
 const NUM_MAX = 9;
+const NUM_INIT = 3;
 
 type State = {
   labels: Array<any>,
-  num: number
+  num: number,
+  open: boolean
 };
 
 function makeLabels(n) {
   return _.range(1, n + 1);
 }
 
+function makeSecretLabels(n) {
+  return _.repeat("?", n).split("");
+}
+
 class App extends React.Component<{}, State> {
-  state = { labels: makeLabels(3), num: 3 };
+  state = { labels: makeSecretLabels(NUM_INIT), num: NUM_INIT, open: false };
   setNum = num => {
     this.setState({
       num,
-      labels: makeLabels(num)
+      open: false,
+      labels: makeSecretLabels(num)
     });
   };
   render() {
@@ -59,7 +66,14 @@ class App extends React.Component<{}, State> {
             raised
             color="primary"
             onClick={() => {
-              this.setState({ labels: _.shuffle(state.labels) });
+              if (state.open) {
+                this.setState({ labels: _.shuffle(state.labels) });
+              } else {
+                this.setState({
+                  labels: _.shuffle(makeLabels(state.num)),
+                  open: true
+                });
+              }
             }}
             style={{ width: "100%", height: "4em" }}
           >
