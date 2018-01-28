@@ -29,18 +29,25 @@ class App extends React.Component<{}, State> {
     console.log(state);
     return (
       <div>
-        <div>Graph page</div>
+        <h1>iJanken</h1>
         <div>
           <Board labels={state.labels} />
         </div>
-        <div style={{ display: "flex" }}>
-          {_.range(2, NUM_MAX).map(i => (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-around"
+          }}
+        >
+          {_.range(2, NUM_MAX + 1).map(i => (
             <Button
               key={i}
               raised
               onClick={() => {
                 this.setNum(i);
               }}
+              style={{ width: "24%", height: "2em" }}
             >
               {i}
             </Button>
@@ -53,7 +60,7 @@ class App extends React.Component<{}, State> {
             onClick={() => {
               this.setState({ labels: _.shuffle(state.labels) });
             }}
-            style={{ width: "100%" }}
+            style={{ width: "100%", height: "4em" }}
           >
             Pon!
           </Button>
