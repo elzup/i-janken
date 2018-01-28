@@ -30,6 +30,7 @@ class App extends React.Component<{}, State> {
     return (
       <div>
         <h1>iJanken</h1>
+        <p>スマホを囲って自分の色を決める→[PON!]</p>
         <div>
           <Board labels={state.labels} />
         </div>

@@ -3,8 +3,6 @@
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
 const RADIAN = Math.PI / 180;
 
 const renderCustomizedLabel = ({
@@ -26,6 +24,7 @@ const renderCustomizedLabel = ({
       y={y}
       fill="white"
       textAnchor={x > cx ? "start" : "end"}
+      fontSize="2em"
       dominantBaseline="central"
     >
       {name}
@@ -47,7 +46,7 @@ const Board = (props: Props) => {
           dataKey="value"
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={80}
+          outerRadius={"100%"}
           isAnimationActive={false}
           isUpdateAnimationActive={false}
           fill="#8884d8"
@@ -57,7 +56,7 @@ const Board = (props: Props) => {
               isAnimationActive={false}
               isUpdateAnimationActive={false}
               key={index}
-              fill={COLORS[index % COLORS.length]}
+              fill={`hsla(${index / data.length * 360}, 100%, 50%, 0.5)`}
             />
           ))}
         </Pie>
