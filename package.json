@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://elzup.github.io/i-janken/",
   "dependencies": {
-    "autoprefixer": "7.2.5",
+    "autoprefixer": "9.6.1",
     "babel-core": "6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-jest": "22.1.0",
