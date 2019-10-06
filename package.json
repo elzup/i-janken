@@ -97,6 +97,6 @@
     "babel-plugin-material-ui": "0.3.1",
     "babel-plugin-recharts": "1.2.0",
     "flow-bin": "0.108.0",
-    "gh-pages": "1.2.0"
+    "gh-pages": "2.1.1"
   }
 }
